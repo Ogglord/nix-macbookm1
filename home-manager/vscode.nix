@@ -17,6 +17,7 @@ in
     extensions = with pkgs.vscode-extensions; [
       dracula-theme.theme-dracula
       arcticicestudio.nord-visual-studio-code
+      extensions.idleberg.badges
       jnoortheen.nix-ide
       yzhang.markdown-all-in-one
       tamasfe.even-better-toml

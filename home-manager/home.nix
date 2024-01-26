@@ -87,10 +87,8 @@
   # programs.neovim.enable = true;
   # home.packages = with pkgs; [ steam ];
 
-  # Enable home-manager and git
+  # Enable home-manager 
   programs.home-manager.enable = true;
-  programs.git.enable = true;
-  programs.gh.enable = true;
   programs.firefox = {
 
     enable = true;
@@ -122,6 +120,18 @@
   programs.nix-index = {
     enable = true;
     enableZshIntegration = true;
+  };
+  programs.gh-dash.enable = true;
+  programs.gh = {
+    # git and github clients
+    enable = true;
+    settings.git_protocol = "ssh";
+  };
+  programs.git = {
+    enable = true;
+    userName = "ogglord";
+    userEmail = "oag@proton.me";
+
   };
   programs.ssh = {
     ## enable 1password ssh agent

@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"editor.quickSuggestions": {
+			"comments": "inline",
+			"strings": "inline"
+		}
+	}
+}

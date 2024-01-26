@@ -8,6 +8,7 @@
 , ...
 }:
 let
+  #Note! Change this to your username
   username = "ogge";
 in
 {

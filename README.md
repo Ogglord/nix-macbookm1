@@ -7,7 +7,7 @@
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">Simplistic NixOS config 2024</h3>
+  <h3 align="center">A simplistic NixOS config for 2024</h3>
 
   <p align="center">
     An awesome source of inspiration
@@ -55,40 +55,45 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
 There are many great nix configurations templates available on GitHub; however, this is mine.
 I like it because:
 * It is simplistic
-* It is based on flakes
+* It is based on flakes, system and home-manager are (re)built together, always. Stop bothering with nixos-rebuild and home-manager switch
 * Almost all packages and configuration are on user level either made through home-manager or custom code
 
 Of course, no one nix config will serve everyones taste You may also suggest changes by forking this repo and creating a pull request or opening an issue. 
 
 ### Built With
 
-* [![Next][Next.js]][Next-url]
-* [![React][React.js]][React-url]
-* [![Vue][Vue.js]][Vue-url]
-* [![Angular][Angular.io]][Angular-url]
-* [![Svelte][Svelte.dev]][Svelte-url]
-* [![Laravel][Laravel.com]][Laravel-url]
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![JQuery][JQuery.com]][JQuery-url]
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
+ * nano
+ * vs code
+ * blood sweat and coffee
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-Lorem upsum
+1. Install NixOS
+2. Enable flakes
+3. Setup your user with a passwd
+4. Clone the repo
+5. Make sure to update hardware-configuration.nix (!)
+6. Tweak the username (<a href="https://github.com/Ogglord/nix/blob/main/nixos/configuration.nix">here</a>)
+7. Build it
 
-### Prerequisites
+### How to build
 
 To rebuild everything and switch to the new build
-* nix
+* full command
   ```nix
-  nixos-rebuild switch .#
+  nixos-rebuild switch .#<hostname>
   ```
+* or use the alias
+  ```bash
+  rebuild
+  ```
+
+### Useful resources
+
+<li><a href="https://search.nixos.org/packages?">nix Packages</a></li>
+<li><a href="https://search.nixos.org/options?">NixOS Options</a></li>
+<li><a href="https://nix-community.github.io/home-manager/options.xhtml">Home-Manager Options</a></li>

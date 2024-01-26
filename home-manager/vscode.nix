@@ -46,6 +46,7 @@ in
       };
       "editor.fontSize" = 15;
       "editor.fontFamily" = "Hack Nerd Font Mono";
+      "editor.quickSuggestions" = true;
       "git.enableSmartCommit" = true;
       "git.confirmSync" = false;
       "window.titleBarStyle" = "custom";

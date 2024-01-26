@@ -12,10 +12,10 @@
   <p align="center">
     An awesome source of inspiration
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/Ogglord/nix/blob/main/"><strong>Explore the repo »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/Ogglord/nix/flake.nix">flake.nix is the starting point</a>
+    <a href="https://github.com/Ogglord/nix/blob/main/flake.nix">flake.nix</a>
     ·
     <a href="https://github.com/Ogglord/nix/issues">Report Bug</a>
     ·

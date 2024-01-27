@@ -46,6 +46,11 @@ in
         });
       })
 
+      # custom dwm points to local git repo
+      (final: prev: {
+        dwm = prev.dwm.overrideAttrs (old: { src = /home/${username}/repos/dwm-ogglord; });
+      })
+
       # Or define it inline, for example:
       # (final: prev: {
       #   hi = final.hello.overrideAttrs (oldAttrs: {
@@ -150,6 +155,10 @@ in
     gnome-contacts
     gnome-initial-setup
   ]);
+
+  ###############################
+  ## system-wide programs
+  ###############################
   programs.dconf.enable = true;
   environment.systemPackages = with pkgs; [
     gnome.gnome-tweaks

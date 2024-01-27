@@ -5,14 +5,47 @@
 
     envExtra = ''
       function _source {
-        for file in "$@"; do
-          [ -r $file ] && source $file
+        for filepath in "$@"; do
+          if [[ -f "$filepath" ]]; then
+            source "$filepath"
+          else
+            echo "File '$filepath' does not exist."
+          fi
+         
         done
-      }'';
+      }
+      
+      function _rebuild_nix_flake_dir {
+        directory="''${1:-.}"
+        if [[ -d "$directory" ]]; then
+
+           # Remove trailing slash from directory if present
+          if [[ "$directory" == */ ]]; then
+            directory="''${directory%?}"
+          fi
+          flakepath="$directory/flake.nix"
+          if [[ -f "$flakepath" ]]; then
+            pushd $directory > /dev/null
+            echo "Rebuilding nix-os using flake.nix in $directory"
+            sudo nixos-rebuild switch --flake --no-warn-dirty .#
+            popd > /dev/null
+          else
+            echo "Flake '$flakepath' does not exist."
+          fi
+
+         
+        else
+          echo "Directory '$directory' does not exist."
+        fi
+      }
+
+
+      
+    '';
 
 
     shellAliases = {
-      rebuild = "sudo nixos-rebuild switch --flake .#";
+      rebuild = ''_rebuild_nix_flake_dir "''${HOME}/nix"'';
       z = ''(source $ZDOTDIR/.zshrc ; echo "Reloading zsh config"...)'';
       exa = "eza --group-directories-first --color-scale -g";
       ls = "eza -l";

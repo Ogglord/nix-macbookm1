@@ -47,9 +47,8 @@ in
       })
 
       # custom dwm points to local git repo
-      (final: prev: {
-        dwm = prev.dwm.overrideAttrs (old: { src = /home/${username}/repos/dwm-ogglord; });
-      })
+      ##   dwm = prev.dwm.overrideAttrs (old: { src = /home/ogge/repos/dwm-ogglord; });
+      #})
 
       # Or define it inline, for example:
       # (final: prev: {
@@ -124,47 +123,77 @@ in
   # Swedish keyboard
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
-    font = "Lat2-Terminus16";
     keyMap = "sv-latin1";
+    packages = [ pkgs.terminus_font ];
+    font = "${pkgs.terminus_font}/share/consolefonts/ter-i22b.psf.gz";
   };
 
-  # Enable the X11 windowing system with Swe keyboard
-  services.xserver = {
-    xkb.layout = "se";
-    xkb.options = "eurosign:e";
+
+  services = {
+    #flatpak.enable = true;
+    dbus.enable = true;
+    picom.enable = true;
+
+    xserver = {
+      enable = true;
+      dpi = 192;
+      windowManager.dwm = {
+        enable = true;
+        package = pkgs.dwm.overrideAttrs {
+          src = /home/ogge/repos/dwm-ogglord;
+        };
+      };
+      layout = "se";
+      xkb.layout = "se";
+      xkb.options = "eurosign:e";
+
+      displayManager = {
+        lightdm.enable = true;
+        setupCommands = ''
+          ${pkgs.xorg.xrandr}/bin/xrandr --dpi 192 --output eDP-1 --mode 3456x2160 --pos 0x0 --rotate normal
+        '';
+        autoLogin = {
+          enable = true;
+          user = "ogge";
+        };
+      };
+    };
   };
 
-  services.xserver.enable = true;
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-  environment.gnome.excludePackages = (with pkgs; [
-    gnome-photos
-    gnome-tour
-  ]) ++ (with pkgs.gnome; [
-    cheese # webcam tool
-    gnome-music
-    #gedit # text editor
-    epiphany # web browser
-    geary # email reader
-    gnome-characters
-    tali # poker game
-    iagno # go game
-    hitori # sudoku game
-    atomix # puzzle game
-    yelp # Help view
-    gnome-contacts
-    gnome-initial-setup
-  ]);
+  xdg.portal = {
+    enable = true;
+    config.common.default = "*";
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  };
+
+  security.polkit.enable = true;
+
+  systemd = {
+    user.services.polkit-gnome-authentication-agent-1 = {
+      description = "polkit-gnome-authentication-agent-1";
+      wantedBy = [ "graphical-session.target" ];
+      wants = [ "graphical-session.target" ];
+      after = [ "graphical-session.target" ];
+      serviceConfig = {
+        Type = "simple";
+        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+        Restart = "on-failure";
+        RestartSec = 1;
+        TimeoutStopSec = 10;
+      };
+    };
+  };
+
 
   ###############################
   ## system-wide programs
   ###############################
   programs.dconf.enable = true;
-  environment.systemPackages = with pkgs; [
-    gnome.gnome-tweaks
+  #environment.systemPackages = with pkgs; [
+  #  gnome.gnome-tweaks
 
-  ];
-  services.gnome.gnome-browser-connector.enable = true;
+  #];
+  #services.gnome.gnome-browser-connector.enable = true;
 
   programs.zsh.enable = true;
   programs._1password.enable = true;

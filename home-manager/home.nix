@@ -18,6 +18,7 @@
     # ./gtk.nix
     ./dconf.nix
     ./autostart.nix
+    ./titus.nix
   ];
 
   nixpkgs = {
@@ -79,7 +80,7 @@
       gnome.dconf-editor
     ] ++
     [
-      (pkgs.nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "Hack" ]; })
+      (pkgs.nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "Hack" "Meslo" ]; })
     ];
   };
 

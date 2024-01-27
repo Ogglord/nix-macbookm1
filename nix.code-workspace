@@ -2,6 +2,9 @@
 	"folders": [
 		{
 			"path": "."
+		},
+		{
+			"path": "../repos/dwm-ogglord"
 		}
 	],
 	"settings": {

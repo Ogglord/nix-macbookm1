@@ -27,7 +27,7 @@
           if [[ -f "$flakepath" ]]; then
             pushd $directory > /dev/null
             echo "Rebuilding nix-os using flake.nix in $directory"
-            sudo nixos-rebuild switch --flake --no-warn-dirty .#
+            sudo nixos-rebuild switch --flake .#
             popd > /dev/null
           else
             echo "Flake '$flakepath' does not exist."

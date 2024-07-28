@@ -1,13 +1,9 @@
 
 
-<!-- PROJECT LOGO -->
-<br />
-<div align="center">
-  <a href="https://github.com/Ogglord/nix">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
 
-  <h3 align="center">A simplistic NixOS config for 2024</h3>
+<div align="center">
+ 
+  <h3 align="center">My NixOS config for my M1 Macbook Pro </h3>
 
   <p align="center">
     An awesome source of inspiration

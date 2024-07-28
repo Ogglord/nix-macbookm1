@@ -56,12 +56,6 @@ I like it because:
 
 Of course, no one nix config will serve everyones taste You may also suggest changes by forking this repo and creating a pull request or opening an issue. 
 
-### Built With
-
- * nano
- * vs code
- * blood sweat and coffee
-
 <!-- GETTING STARTED -->
 ## Getting Started
 
